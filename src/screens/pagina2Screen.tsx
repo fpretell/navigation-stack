@@ -22,7 +22,13 @@ export const Pagina2Screen = () => {
         onPress={() => navigator.navigate('Pagina3Screen')}
       />
 
-      <Text>Navegar con argumentos</Text>
+      <Text
+        style={{
+          marginVertical: 20,
+          fontSize: 20,
+        }}>
+        Navegar con argumentos
+      </Text>
 
       <View
         style={{
