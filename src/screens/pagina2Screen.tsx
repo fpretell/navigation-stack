@@ -1,8 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import {useNavigation} from '@react-navigation/core';
+import Icon from 'react-native-vector-icons/Ionicons';
 import React, {useEffect} from 'react';
 import {Button, Text, TouchableOpacity, View} from 'react-native';
-import {styles} from '../themes/AppTheme';
+import {colores, styles} from '../themes/AppTheme';
+import { blue100 } from 'react-native-paper/lib/typescript/styles/colors';
 
 export const Pagina2Screen = () => {
   const navigator = useNavigation();
@@ -37,7 +39,10 @@ export const Pagina2Screen = () => {
           marginVertical: 20,
         }}>
         <TouchableOpacity
-          style={styles.botonGrande}
+          style={{
+            ...styles.botonGrande,
+            backgroundColor: 'blue',
+          }}
           onPress={() =>
             navigator.navigate('PersonaScreen', {
               id: 1,
@@ -45,19 +50,24 @@ export const Pagina2Screen = () => {
               apellido: 'Pretell',
             })
           }>
+          <Text style={styles.botonGrandeTexto}><Icon name="man-outline" size={30} color={'white'} /></Text>
           <Text style={styles.botonGrandeTexto}>Felix</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.botonGrande}
+          style={{
+            ...styles.botonGrande,
+            backgroundColor: 'red',
+          }}
           onPress={() =>
             navigator.navigate('PersonaScreen', {
               id: 1,
-              nombre: 'Airaldi',
-              apellido: 'J. J.',
+              nombre: 'Britney',
+              apellido: 'Spears',
             })
           }>
-          <Text style={styles.botonGrandeTexto}>Mensa</Text>
+            <Text style={styles.botonGrandeTexto}><Icon name="woman-outline" size={30} color={'white'} /></Text>
+            <Text style={styles.botonGrandeTexto}>Britney</Text>
         </TouchableOpacity>
       </View>
     </View>

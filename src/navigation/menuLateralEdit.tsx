@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {
   createDrawerNavigator,
   DrawerContentComponentProps,
@@ -14,25 +15,16 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import {styles} from '../themes/AppTheme';
+import {colores, styles} from '../themes/AppTheme';
 import {createStackNavigator} from '@react-navigation/stack';
+import { Tabs } from './Tabs';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 const settingStackScreen_ = () => {
   return (
-    <Stack.Navigator
-      // screenOptions={{
-      //   headerStyle: {
-      //     elevation: 0,
-      //     shadowColor: 'transparent',
-      //   },
-      //   cardStyle: {
-      //     backgroundColor: 'white',
-      //   },
-      // }}
-    >
+    <Stack.Navigator>
       <Stack.Screen
         // options={{title: 'Página 1'}}
         name="SettingsScreen"
@@ -49,7 +41,8 @@ export const MenuLateralEdit = () => {
     <Drawer.Navigator
       drawerType={width >= 768 ? 'permanent' : 'front'}
       drawerContent={props => <MenuInterno {...props} />}>
-      <Drawer.Screen name="StackNavigator" component={StackNavigator} />
+      <Drawer.Screen name="Tabs" component={Tabs} />
+      {/* <Drawer.Screen name="StackNavigator" component={StackNavigator} /> */}
       <Drawer.Screen name="SettingsScreen" component={settingStackScreen_} />
     </Drawer.Navigator>
   );
@@ -76,13 +69,13 @@ const MenuInterno = ({
       <View style={styles.menuContainer}>
         <TouchableOpacity
           style={styles.menuBoton}
-          onPress={() => navigation.navigate('StackNavigator')}>
-          <Text style={styles.menuTexto}>Navegación</Text>
+          onPress={() => navigation.navigate('Tabs')}>
+          <Text style={styles.menuTexto}><Icon name='compass-outline' size={20} color={styles.menuTexto} /> Navegación</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menuBoton}
           onPress={() => navigation.navigate('SettingsScreen')}>
-          <Text style={styles.menuTexto}>Ajustes</Text>
+          <Text style={styles.menuTexto}><Icon name='settings-outline' size={20} color={styles.menuTexto} /> Ajustes</Text>
         </TouchableOpacity>
       </View>
     </DrawerContentScrollView>
